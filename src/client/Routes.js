@@ -2,16 +2,32 @@ import React from 'react';
 
 import HomePage from './pages/HomePage';
 import UsersListPage from './pages/UsersListPage';
+import App from './App';
+import NotFoundPage from './pages/NotFoundPage';
+import AdminsListPage from './pages/AdminsListPage';
 
 export default [
     {
-        path: '/',
-        exact: true,
-        ...HomePage
-    },
-    {
-        path: '/users',
-        exact: false,
-        ...UsersListPage
+        ...App,
+        routes: [
+            {
+                path: '/',
+                exact: true,
+                ...HomePage
+            },
+            {
+                path: '/users',
+                exact: false,
+                ...UsersListPage
+            },
+            {
+                path: '/admins',
+                exact: false,
+                ...AdminsListPage
+            },
+            {
+                ...NotFoundPage
+            }
+        ]
     }
 ];

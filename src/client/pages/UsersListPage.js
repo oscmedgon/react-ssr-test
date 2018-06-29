@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Helmet} from 'react-helmet';
 
 import {fetchUsers} from '../actions';
 
@@ -12,9 +13,19 @@ class UsersListPage extends Component {
             return <li key={user.id}>{user.name}</li>
         })
     }
+
+    head () {
+        return (
+            <Helmet>
+                <title>{`${this.props.users.length} Users Loaded`}</title>
+                <meta property="og:title" content="Users App" />
+            </Helmet>
+        )
+    }
     render () {
         return (
             <div>
+                {this.head()}
                 <h1>
                     Here is a big list of users
                 </h1>
